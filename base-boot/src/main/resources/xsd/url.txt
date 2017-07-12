@@ -1,0 +1,2 @@
+http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+http://xmlns.oracle.com/weblogic/weblogic-web-app/1.9/weblogic-web-app.xsd
