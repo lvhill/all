@@ -1,0 +1,10 @@
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+http://www.springframework.org/schema/context/spring-context-4.3.xsd
+http://www.springframework.org/schema/tool/spring-tool-4.3.xsd
+http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd
+http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+http://xmlns.oracle.com/weblogic/weblogic-web-app/1.2/weblogic-web-app.xsd
+

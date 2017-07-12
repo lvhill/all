@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>美乐商城后台管理</title>
+<link rel="icon" type="image/x-icon" href="./static/favicon.ico" />
+<script type="text/javascript" src="./static/config/config.js"></script>
+<script type="text/javascript" src="./static/js/util/url.js"></script>
+<script type="text/javascript"
+	src="./static/js/jquery/jquery-1.11.1.js"></script>
+
+<!-- 头部css开始 -->
+<style type="text/css">
+.header-iframe-style * {
+	margin: 0;
+	padding: 0;
+	font-family: simsun;
+	color: #373736;
+}
+
+.header-iframe-style {
+	overflow: auto;
+	background-color: #E7E7E7;
+	min-width: 1065px;
+}
+
+.header-iframe-style a {
+	text-decoration: none;
+	color: #373736;
+}
+
+.head {
+	height: 74px;
+	background-color: #F78C27;
+}
+
+.head-logo {
+	width: 165px;
+	height: 55px;
+	float: left;
+	margin: 10px 0 0 20px;
+}
+
+.head-nologo {
+	height: 100%;
+	margin-left: 205px;
+}
+
+.head-menu {
+	float: left;
+}
+
+.head-menu ul {
+	list-style: none;
+	margin-top: 40px;
+}
+
+.head-menu ul li {
+	float: left;
+	margin-right: 10px;
+}
+
+.head-menu ul li a {
+	font-size: 12px;
+	font-weight: bold;
+	background: #FBBB6D;
+	color: #FFFFFF;
+	display: block;
+	height: 14px;
+	padding: 11px 14px 9px 14px;
+}
+
+.head-menu .active a {
+	background: #FFFFFF;
+	color: #F78C27;
+}
+
+.head-info {
+	float: right;
+	padding-right: 14px;
+	font-size: 12px;
+	width: 214px;
+}
+
+.head-info-top {
+	color: #F67A06;
+	background-color: #FFF;
+	padding: 6px 4px;
+}
+
+.head-info-top a {
+	color: #F67A06;
+	padding: 4px 6px;
+}
+
+.head-info-bottom {
+	float: right;
+	margin-top: 17px;
+	color: #fff;
+}
+
+.head-info-bottom span {
+	color: #fff;
+}
+
+.head-info-bottom a {
+	background-color: #FFF;
+	color: #F67A06;
+	padding: 5px 10px;
+	display: inline-block;
+}
+</style>
+<!-- 头部css结束 -->
+
+<!-- 侧边栏菜单css开始 -->
+<style type="text/css">
+.side-iframe-style * {
+	margin: 0;
+	padding: 0;
+	font-family: simsun;
+	color: #373736;
+}
+
+.side-iframe-style {
+	overflow: auto;
+	background-color: #E7E7E7;
+}
+
+.side-iframe-style a {
+	text-decoration: none;
+	color: #373736;
+}
+
+.menu {
+	width: 140px;
+	margin: 0 20px 20px 20px;
+}
+
+.menu-shrinkSeparator {
+	position: fixed;
+	width: 140px;
+	height: 20px;
+	overflow: hidden;
+	background: #e7e7e7 url(./skin/images/arrow.gif) no-repeat;
+}
+
+.menu-view {
+	margin-top: 7px;
+	font-size: 12px;
+	padding-bottom: 35px;
+	background-color: #FFFFFF;
+}
+
+.menu-view li {
+	list-style: none;
+	width: 100%;
+	line-height: 35px;
+	background-image: url(./skin/images/submenubg.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.menu-view li a {
+	padding-left: 30px;
+	display: block;
+}
+
+.menu-view .active {
+	background-image: url(./skin/images/submenubg.gif);
+	background-repeat: no-repeat;
+	background-position: 0 -35px;
+}
+
+</style>
+<!-- 侧边栏菜单css结束 -->
+
+<!-- div的frameset布局开始  -->
+<style type="text/css">
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.header-iframe-style {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 1065px;
+	overflow: auto;
+}
+
+.body-iframe-style {
+	position: absolute;
+	right: 0;
+	bottom: 0px;
+	left: 0;
+	width: 100%;
+}
+
+.side-iframe-style {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 100% !important;
+	overflow: auto;
+}
+
+.main-iframe-style {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100% !important;
+	min-width: 965px;
+	overflow: auto;
+}
+
+/* header、side和main设置宽高 */
+#header-iframe {
+	height: 98px;
+}
+
+#body-iframe {
+	top: 98px;
+}
+
+#side-iframe {
+	width: 180px;
+}
+
+#main-iframe {
+	left: 180px;
+}
+
+#main-location {
+	font-size: 12px;
+	border-bottom: 1px solid #C7C0C0;
+	color: #999999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	
+	width: 100%;
+	height: 29px;
+	line-height: 29px;
+	background-color: #FFFFFF;
+}
+
+#main-frame {
+	width: 100%;
+	height: 100%;
+	margin-bottom: -4px;
+	border: 0;
+}
+</style>
+<!-- div的frameset布局结束  -->
+<!-- 主体js开始 -->
+<script type="text/javascript">
+	var allMenus = null;
+	var userNmae = null;
+
+	loadUser();
+	window.onload = function() {
+		initAllMenus();
+		initHeadMenus();
+	}
+
+	function initAllMenus() {
+		var url = SERVE_ROOT + "/menu/queryMenus";
+		$.ajaxSettings.async = false; //同步操作
+		$.getJSON(url, function(msg) {
+			if(msg.success){
+				allMenus = msg.entity;
+			}
+		});
+		$.ajaxSettings.async = true;
+	}
+	function initHeadMenus() {
+		var headMenus = getMenusByParentId('0');
+		initUser(userNmae);
+		init(headMenus);
+	}
+	/**
+	 * 根据父id获得所有子菜单
+	 */
+	function getMenusByParentId(id) {
+		var array = new Array();
+		for (var i = 0, j = 0; i < allMenus.length; ++i) {
+			if (allMenus[i].parentMenuid == id) {
+				array[j] = allMenus[i];
+				++j;
+			}
+		}
+		return array;
+	}
+	function headMenuClick(menuId, headMenuName) {
+		var sideMenus = getMenusByParentId(menuId);
+		reset(headMenuName, sideMenus);
+	}
+	function reloadMainFrame(url) {
+		document.getElementById("main-frame").src = url;
+	}
+	function loadUser() {
+		var url = SERVE_ROOT + "/authority/loadUser";
+		$.ajax({
+			type : "POST",
+			url : url,
+			async : false,
+			success : function(msg) {
+				if (msg.success) {
+					userNmae = msg.entity;
+				} else {
+					window.top.location = './login.html';
+				}
+			}
+		});
+	}
+</script>
+<!-- 主体js结束 -->
+
+<!-- 头部js开始 -->
+<script type="text/javascript">
+	function init(headMenus) {
+		setHeadMenus(headMenus);
+		menuClick();
+	}
+	function setHeadMenus(headMenus) {
+		var headUl = document.getElementById("head-menu-ul");
+		for (var i = 0; i < headMenus.length; ++i) {
+			var li = document.createElement("li");
+			var a = document.createElement("a");
+			a.href = SERVE_ROOT + headMenus[i].url;
+			a.menuId = headMenus[i].menuid;
+			a.onclick = function() {
+				return false;
+			};
+			a.innerHTML = headMenus[i].name;
+			li.appendChild(a);
+			headUl.appendChild(li);
+		}
+	}
+	function initUser(userName) {
+		var userspan = document.getElementById("user_name");
+		userspan.innerHTML = userName;
+	}
+	/**
+	 * 导航栏菜单点击处理头部
+	 */
+	function menuClick() {
+		var menuLi = document.getElementById("head-menu-ul")
+				.getElementsByTagName("li");
+		var i = 0;
+		for (i = 0; i < menuLi.length; i++) {
+			menuLi[i].onclick = function() {
+				for (i = 0; i < menuLi.length; i++) {
+					menuLi[i].className = "";
+				}
+				this.className = " active";
+				var a = this.getElementsByTagName("a")[0];
+				var menuId = a.menuId;
+				var menuName = a.innerHTML;
+				headMenuClick(menuId, menuName);
+			};
+		}
+		//模拟鼠标点击菜单
+		menuLi[0].click();
+	}
+	function logout() {
+		window.top.location = './login.html';
+	}
+</script>
+<!-- 头部js结束 -->
+
+<!-- 侧边栏菜单js开始 -->
+<script type="text/javascript">
+	var headMenuName = null;
+
+	function reset(sheadMenuName, sideMenus) {
+		headMenuName = sheadMenuName;
+		setSideMenus(sideMenus);
+		sileMenuClick();
+	}
+	function setSideMenus(sideMenus) {
+		var sideUl = document.getElementById("menu-view");
+		sideUl = removeAllChild(sideUl);
+		for (var i = 0; i < sideMenus.length; ++i) {
+			var li = document.createElement("li");
+			var a = document.createElement("a");
+			a.href = SERVE_ROOT + "/" + sideMenus[i].url;
+			a.menuId = sideMenus[i].menuid;
+			a.onclick = function() {
+				return false;
+			};
+			a.innerHTML = sideMenus[i].name;
+			li.appendChild(a);
+			sideUl.appendChild(li);
+		}
+	}
+	/**
+	 * 菜单点击处理
+	 */
+	function sileMenuClick() {
+		var menuLi = document.getElementById("menu-view").getElementsByTagName(
+				"li");
+		for (var i = 0; i < menuLi.length; i++) {
+			menuLi[i].onclick = function() {
+				for (var j = 0; j < menuLi.length; j++)
+					menuLi[j].className = "";
+				this.className = "active";
+				var a = this.getElementsByTagName("a")[0];
+				var menuname = a.innerHTML;
+				var url = a.href;
+				//
+				url = addOrUpdateParamToUrl(url, "headMenu", headMenuName);
+				url = addOrUpdateParamToUrl(url, "sideMenu", menuname);
+				setLocation(headMenuName, menuname);
+				//
+				reloadMainFrame(url);
+			};
+		}
+		//模拟鼠标点击菜单
+		menuLi[0].click();
+	}
+
+	function removeAllChild(e) {
+		while (e.hasChildNodes()) { //当div下还存在子节点时 循环继续
+			e.removeChild(e.firstChild);
+		}
+		return e;
+	}
+	function setLocation(headMenu, sideMenu) {
+		$("#head-menu-location").text(headMenu);
+		$("#side-menu-location").text(sideMenu);
+	}
+</script>
+<!-- 侧边栏菜单js结束 -->
+
+</head>
+<body>
+	<!-- 头部开始 -->
+	<div id="header-iframe" class="header-iframe-style">
+		<div class="head">
+			<img class="head-logo" alt="system-logo"
+				src="./static/upload/logo.png" />
+			<div class="head-nologo">
+				<div id="head-menu" class="head-menu">
+					<ul id="head-menu-ul">
+					</ul>
+				</div>
+				<div class="head-info">
+					<div class="head-info-top">
+						<a href="" target="_blank">本站首页</a>| <a
+							href="/mainFrame?app=change_password" target="main-frame">修改密码</a>|
+						<a href="/mainFrame?app=navigate" target="main-frame">功能导航</a>
+					</div>
+					<div class="head-info-bottom">
+						您好，<span id="user_name"></span> &nbsp;<a
+							href="javascript:logout();" target="_top">退出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 4px; width: 100%; background-color: #FFFFFF;"></div>
+	</div>
+	<!-- 头部结束 -->
+
+	<div id="body-iframe" class="body-iframe-style">
+
+		<!-- 侧边栏菜单开始 -->
+		<div id="side-iframe" class="side-iframe-style">
+			<div class="menu">
+				<p class="menu-shrinkSeparator"></p>
+				<br />
+
+				<ul id="menu-view" class="menu-view">
+				</ul>
+			</div>
+		</div>
+		<!-- 侧边栏菜单结束 -->
+
+		<!-- 主体内容开始 -->
+		<div id="main-iframe" class="main-iframe-style">
+			<!-- 位置开始 -->
+			<div id="main-location">
+				<span id="head-menu-location" style="margin: 0 10px;"></span>&gt;<span
+					id="side-menu-location" style="margin: 0 10px;"></span>
+			</div>
+			<!-- 位置结束 -->
+			<iframe id="main-frame" name="main-frame"></iframe>
+		</div>
+		<!-- 主体内容结束 -->
+	</div>
+</body>
+</html>

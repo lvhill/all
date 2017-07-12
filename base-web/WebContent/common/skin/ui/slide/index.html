@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slide</title>
+<script type="text/javascript" src="../../js/jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slide.css" />
+<style type="text/css">
+#example_fade, #example_level, #example_vertical{
+	width: 400px;
+	height: 250px;
+	float: left;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+.slide-list>li>span{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	new Slide($("#example_fade"));
+	new Slide($("#example_level"), 'level');
+	new Slide($("#example_vertical"), 'vertical');
+});
+</script>
+</head>
+<body>
+
+<!-- example_fade 开始 -->
+<div id="example_fade" class="slide">
+    <ul class="slide-list">
+        <li><span style="background-color: yellow;"></span></li>
+        <li><span style="background-color: blue;"></span></li>
+        <li><span style="background-color: fuchsia;"></span></li>
+        <li><span style="background-color: green;"></span></li>
+        <li><span style="background-color: purple;"></span></li>
+        <li><span style="background-color: red;"></span></li>
+    </ul>
+    <p class="slide-prev"></p>
+    <p class="slide-next"></p>
+	<div class="slide-dot">
+		<p>
+			<b>1</b>
+			<b>2</b>
+			<b>3</b>
+			<b>4</b>
+			<b>5</b>
+			<b>6</b>
+		</p>
+	</div>
+</div>
+<!-- example_fade 结束 -->
+
+<!-- example_level 开始 -->
+<div id="example_level" class="slide">
+    <ul class="slide-list">
+        <li><span style="background-color: yellow;"></span></li>
+        <li><span style="background-color: blue;"></span></li>
+        <li><span style="background-color: fuchsia;"></span></li>
+        <li><span style="background-color: green;"></span></li>
+        <li><span style="background-color: purple;"></span></li>
+        <li><span style="background-color: red;"></span></li>
+    </ul>
+    <p class="slide-prev"></p>
+    <p class="slide-next"></p>
+	<div class="slide-dot">
+		<p>
+			<b>1</b>
+			<b>2</b>
+			<b>3</b>
+			<b>4</b>
+			<b>5</b>
+			<b>6</b>
+		</p>
+	</div>
+</div>
+<!-- example_level 结束 -->
+
+<!-- example_vertical 开始 -->
+<div id="example_vertical" class="slide">
+    <ul class="slide-list">
+    	<li><span style="background-color: red;"></span></li>
+    	<li><span style="background-color: purple;"></span></li>
+    	<li><span style="background-color: green;"></span></li>
+    	<li><span style="background-color: fuchsia;"></span></li>
+    	<li><span style="background-color: blue;"></span></li>
+        <li><span style="background-color: yellow;"></span></li>
+    </ul>
+    <p class="slide-prev"></p>
+    <p class="slide-next"></p>
+	<div class="slide-dot">
+		<p>
+			<b>1</b>
+			<b>2</b>
+			<b>3</b>
+			<b>4</b>
+			<b>5</b>
+			<b>6</b>
+		</p>
+	</div>
+</div>
+<!-- example_vertical 结束 -->
+
+</body>
+</html>

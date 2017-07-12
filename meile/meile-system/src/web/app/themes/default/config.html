@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./static/config/config.js"></script>
+<script type="text/javascript"
+	src="./static/js/jquery/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="./static/js/util/url.js"></script>
+<link rel="stylesheet" type="text/css" href="./skin/ui/msg/msg.css">
+<script type="text/javascript" src="./skin/ui/msg/msg.js"></script>
+<script type="text/javascript"
+	src="./static/js/util/serialize.js"></script>
+
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	font-family: simsun;
+	color: #373736;
+}
+
+html {
+	overflow: auto;
+}
+
+.maincontent {
+	margin: 50px 20px 20px 20px;
+}
+
+.content {
+	margin-top: 20px;
+	border: 2px solid #E7E7E7;
+}
+
+.content h4 {
+	background-color: #E7E7E7;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px 7px 9px 15px;
+}
+
+.content form {
+	margin-top: 10px;
+}
+
+.content form table {
+	font-size: 12px;
+}
+
+.content form table tr {
+	height: 45px;
+}
+
+.content form table th {
+	font-weight: normal;
+	width: 200px;
+	text-align: right;
+}
+
+.content form table td {
+	padding: 0px 5px 0px 20px;
+}
+
+.content form table td input {
+	width: 210px;
+	height: 22px;
+	padding: 0px 5px;
+	border: 1px solid #C7C0C0;
+}
+
+.content form .submit {
+	font-size: 12px;
+	font-weight: bold;
+	background: #F78C27;
+	color: #FFFFFF;
+	cursor: pointer;
+	height: 30px;
+	width: 100px;
+	border: 0;
+}
+</style>
+<script type="text/javascript">
+	var headMenu = getLocationParam("headMenu");
+	var sideMenu = getLocationParam("sideMenu");
+	var configs = null;
+	
+	window.onload = function() {
+		$("#title").text(sideMenu);
+		loadConfigs();
+	}
+
+	
+	function loadConfigs() {
+		var url = SERVE_ROOT + "/config/queryAllConfig";
+		$.ajax({
+			type : "POST",
+			contentType : "application/json;charset=UTF-8",
+			url : url,
+			async : false,
+			success : function(msg) {
+				if (msg.success) {
+					configs = msg.entity;
+				}
+			}
+		});
+
+		var shopTheme = configs.shopTheme;
+		var shopThemeList = configs.shopThemeList;
+		var shopThemeEl = $("#shopTheme");
+		for (var i = 0; i < shopThemeList.length; ++i) {
+			shopThemeEl.append("<option value='"+shopThemeList[i]+"'>" + shopThemeList[i] + "</option>");
+		}
+		shopThemeEl.val(shopTheme);
+		
+		var systemTheme = configs.systemTheme;
+		var systemThemeList = configs.systemThemeList;
+		var systemThemeEl = $("#systemTheme");
+		for (var i = 0; i < systemThemeList.length; ++i) {
+			systemThemeEl.append("<option value='"+systemThemeList[i]+"'>" + systemThemeList[i] + "</option>");
+		}
+		systemThemeEl.val(systemTheme);
+	}
+
+	function saveConfigs() {
+		var url = SERVE_ROOT + "/config/updateAllConfig";
+		var data = $("#configForm").serializeRestJsonString()
+		$.ajax({
+			type : "POST",
+			contentType : "application/json;charset=UTF-8",
+			url : url,
+			data : data,
+			async : false,
+			success : function(msg) {
+				if (msg.success) {
+					showMsg("配置修改成功!");
+				} else {
+					showMsg("配置修改失败!");
+				}
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<div class="maincontent">
+		<div class="content">
+			<h4 id="title"></h4>
+			<form id="configForm">
+				<table>
+					<tr>
+						<th>网站前台主题：</th>
+						<td><select id="shopTheme" name="shopTheme" class="theme">
+						</select>（网站前台的页面设计风格。）</td>
+					</tr>
+					<tr>
+						<th>网站后台主题：</th>
+						<td><select id="systemTheme" name="systemTheme" class="theme">
+						</select>（网站后台的页面设计风格。）</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input class="submit" type="button"
+							onclick="saveConfigs();" value="保存配置" />
+						<td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

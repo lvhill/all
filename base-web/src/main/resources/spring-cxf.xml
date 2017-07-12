@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		classpath:xsd/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        classpath:xsd/spring-context-4.3.xsd">
+
+	<description>spring cxf 配置</description>
+
+	<!-- 扫描有注解的class -->
+	<bean id="annotationClassFactory" class="cn.sky.framework.annotation.AnnotationClassFactory">
+		<!-- 扫描的范围 -->
+		<constructor-arg name="packagesToScan" value="cn.sky" />
+		<!-- 扫描的注解 -->
+		<constructor-arg name="annotationFilter">
+			<list>
+				<value>javax.jws.WebService</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>

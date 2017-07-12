@@ -1,0 +1,310 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+img {
+	border: 0;
+}
+ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+
+/*淡入淡出样式 开始*/
+
+.fadeSlide {
+	position: relative;
+}
+
+.fadeSlide .slide-list {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.fadeSlide .slide-list li {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.fadeSlide .slide-list li img{
+	width: 100%;
+	height: 100%;
+}
+
+.fadeSlide .slide-dot {
+	width: 100%;
+	height: 28px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	zoom: 1;
+}
+
+.fadeSlide .slide-dot p {
+	height: 100%;
+	margin: 0 auto;
+}
+
+.fadeSlide .slide-dot b {
+	width: 19px;
+	height: 17px;
+	display: block;
+	float: left;
+	margin-left: 5px;
+	font-size: 12px;
+	border-radius: 50%;
+	background-color: #3E3E3E;
+	color: #FFFFFF;
+	font-family: SimHei ! important;
+	text-align: center;
+	padding-top: 2px;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.fadeSlide .slide-dot .slide-dot-select {
+	background-color: #B61B1F;
+}
+
+.fadeSlide .slide-prev {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-prev.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	left: 0;
+	display: none;
+}
+
+.fadeSlide .slide-prev:HOVER {
+	opacity: 0.4;
+}
+
+.fadeSlide .slide-next {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-next.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	right: 0;
+	display: none;
+}
+
+.fadeSlide .slide-next:HOVER {
+	opacity: 0.4;
+}
+/*淡入淡出样式 结束*/
+
+/*水平滑动样式 开始*/
+.levelSlide {
+	position: relative;
+	margin-bottom: 0;
+	overflow: hidden;
+}
+
+.levelSlide .slide-list {
+	*word-spacing: -1px; /* IE6、7 */
+	letter-spacing: -3px;
+	position: relative;
+	display: block;
+	height: 100%;
+}
+
+.levelSlide .slide-list li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1; /* IE6、7 */
+	vertical-align: top;
+	letter-spacing: normal;
+	word-spacing: normal;
+	font-size: 12px;
+	height: 100%;
+	float: left;
+}
+
+.levelSlide .slide-list li img{
+	width: 100%;
+	height: 100%;
+}
+
+.levelSlide .slide-dot {
+	width: 100%;
+	height: 28px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	zoom: 1;
+}
+
+.levelSlide .slide-dot p {
+	height: 100%;
+	margin: 0 auto;
+}
+
+.levelSlide .slide-dot b {
+	width: 19px;
+	height: 17px;
+	display: block;
+	float: left;
+	margin-left: 5px;
+	font-size: 12px;
+	border-radius: 50%;
+	background-color: #3E3E3E;
+	color: #FFFFFF;
+	font-family: SimHei ! important;
+	text-align: center;
+	padding-top: 2px;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.levelSlide .slide-dot .slide-dot-select {
+	background-color: #B61B1F;
+}
+
+.levelSlide .slide-prev {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-prev.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	left: 0;
+	display: none;
+}
+
+.levelSlide .slide-prev:HOVER {
+	opacity: 0.4;
+}
+
+.levelSlide .slide-next {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-next.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	right: 0;
+	display: none;
+}
+
+.levelSlide .slide-next:HOVER {
+	opacity: 0.4;
+}
+/*水平滑动样式 结束*/
+
+/*垂直滑动样式 开始*/
+.verticalSlide {
+	position: relative;
+	margin-bottom: 0;
+	overflow: hidden;
+}
+
+.verticalSlide .slide-list {
+	*word-spacing: -1px; /* IE6、7 */
+	letter-spacing: -3px;
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.verticalSlide .slide-list li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1; /* IE6、7 */
+	vertical-align: top;
+	letter-spacing: normal;
+	word-spacing: normal;
+	font-size: 12px;
+	height: 100%;
+	float: left;
+}
+
+.verticalSlide .slide-list li img{
+	width: 100%;
+	height: 100%;
+}
+
+.verticalSlide .slide-dot {
+	width: 100%;
+	height: 28px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	zoom: 1;
+}
+
+.verticalSlide .slide-dot p {
+	height: 100%;
+	margin: 0 auto;
+}
+
+.verticalSlide .slide-dot b {
+	width: 19px;
+	height: 17px;
+	display: block;
+	float: left;
+	margin-left: 5px;
+	font-size: 12px;
+	border-radius: 50%;
+	background-color: #3E3E3E;
+	color: #FFFFFF;
+	font-family: SimHei ! important;
+	text-align: center;
+	padding-top: 2px;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.verticalSlide .slide-dot .slide-dot-select {
+	background-color: #B61B1F;
+}
+
+.verticalSlide .slide-prev {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-prev.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	left: 0;
+	display: none;
+}
+
+.verticalSlide .slide-prev:HOVER {
+	opacity: 0.4;
+}
+
+.verticalSlide .slide-next {
+	width: 30px;
+	height: 60px;
+	cursor: pointer;
+	background: #000000 url(../images/slide-next.gif) no-repeat 11px 23px;
+	filter: alpha(opacity : 50);
+	opacity: 0.2;
+	position: absolute;
+	right: 0;
+	display: none;
+}
+
+.verticalSlide .slide-next:HOVER {
+	opacity: 0.4;
+}
+/*垂直滑动样式 结束*/
+

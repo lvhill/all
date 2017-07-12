@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.msg-background {
+	position: fixed;
+	width: 100%;
+	margin-top: -50px;
+}
+
+.msg-background .msg-content {
+	margin-left: 20px;
+	margin-right: 70px;
+	height: 20px;
+	border: 1px solid #CC0000;
+	border-right: 0;
+	background-color: #FFFFCC;
+	text-align: center;
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+.msg-background .msg-close {
+	float: right;
+	margin-top: -27px;
+	margin-right: 20px;
+	width: 50px;
+	height: 25px;
+	border: 1px solid #CC0000;
+	border-left: 0;
+	background-color: #FFFFCC;
+	background-image: url(../../images/x.gif);
+	background-repeat: no-repeat;
+	background-position: 20px 8px;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./static/config/config.js"></script>
+<script type="text/javascript"
+	src="./static/js/jquery/jquery-1.11.1.js"></script>
+<link rel="stylesheet" type="text/css" href="./skin/css/login.css">
+<script type="text/javascript"
+	src="./static/js/util/verifyCode.js"></script>
+<script type="text/javascript"
+	src="./static/js/util/serialize.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		logout();
+		enterPress();
+		verifyCode();
+	}
+
+	//回车登录
+	function enterPress() {
+		$("#verifyCode").keypress(function(e) {
+			var curKey = e.which;
+			if (curKey == 13) {
+				login();
+			}
+		});
+	}
+	function ShowMessageBox(content) {
+		var bg_div = document.getElementById("bg_div");
+		var messagebox_div = document.getElementById("messagebox_div");
+		var msg_content = document.getElementById("msg_content");
+		bg_div.style.display = '';
+		messagebox_div.style.display = '';
+		msg_content.innerHTML = content;
+
+		document.getElementById("button_ok").focus();
+	}
+
+	function ClossMessageBox(url) {
+		var bg_div = document.getElementById("bg_div");
+		var messagebox_div = document.getElementById("messagebox_div");
+		var return_url = "0";
+		bg_div.style.display = 'none';
+		messagebox_div.style.display = 'none';
+		var url = return_url.value;
+		if (url == '-1') {
+			history.go(-1);
+		} else if (url == '0') {
+			window.close();
+		} else if (url == '1') {
+			location.reload();
+		}
+
+		document.getElementById("verifyCode").focus();
+	}
+	function checkform() {
+		var admin_name = document.getElementById("admin_name").value;
+		if (!admin_name) {
+			ShowMessageBox('请输入用户名!', '0');
+			return false;
+		}
+		var admin_password = document.getElementById("admin_password").value;
+		if (!admin_password) {
+			ShowMessageBox('请输入密码!', '0');
+			return false;
+		}
+		var verifyCode = document.getElementById("verifyCode").value;
+		if (!verifyCode) {
+			ShowMessageBox('请输入验证码!', '0');
+			return false;
+		}
+		return true;
+	}
+	
+	function logout(){
+		var url = SERVE_ROOT + "/authority/logout";
+		$.ajaxSettings.async = false; //同步操作
+		$.getJSON(url, function(result) {
+		});
+		$.ajaxSettings.async = true;
+	}
+
+	function login() {
+		if (!checkform())
+			return false;
+		//
+		var url = SERVE_ROOT + "/authority/login";
+		var jsonstring = $("#loginform").serializeRestJsonString();
+		//
+		$.ajax({
+			url : url,
+			data : jsonstring,
+			async : false,
+			contentType:"application/json;charset=UTF-8",
+			type : "post",
+			success : function(msg) {
+				if (msg.success) {
+					window.location.href = SERVE_ROOT;
+					return;
+				} else {
+					refreshVerifyCode();
+					ShowMessageBox(msg.faultstring);
+					return;
+				}
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<div id="login">
+		<div id="bg_div" style="display: none;"></div>
+		<div id="messagebox_div" style="display: none;">
+			<div class="messagebox_title">提示</div>
+			<div id='msg_content' style="margin-bottom: 33px; font-size: 14px;"></div>
+			<input id='return_url' type='hidden' value='0' /> <input
+				id='button_ok' class="btn" type="button" value='确定'
+				onclick="ClossMessageBox('-1')" />
+		</div>
+		<div class="warp">
+			<div class="content">
+				<h1></h1>
+				<form id="loginform">
+					<div class="item">
+						<div class="input">
+							<div class="icon" title="用户名"></div>
+							<input tabindex="1" type="text" name="username" value=""
+								id="admin_name" />
+						</div>
+						<label>用户名：</label>
+					</div>
+					<div class="item">
+						<div class="input">
+							<div class="icon2" title="密&nbsp;&nbsp;码"></div>
+							<input tabindex="2" type="password" name="password" value=""
+								id="admin_password" />
+						</div>
+
+						<label>密&nbsp;&nbsp;码：</label>
+					</div>
+
+					<div class="item-verifyCode">
+						<div class="verifyCode-whole">
+							<div class="verifyCode">
+								<input id="verifyCode" tabindex="3" name="verifyCode"
+									type="text" />
+							</div>
+							<img id="verifyCodeImg"><br /> <a
+								href="javascript:refreshVerifyCode();">看不清？换一张</a>
+						</div>
+						<label>验证码：</label>
+					</div>
+
+					<input type="button" tabindex="4"
+						value="登&nbsp;&nbsp;&nbsp;&nbsp;录" class="submit"
+						onclick="login();" />
+				</form>
+				<p class="copyright">Powered by Meile Mall Copyright &copy;
+					2013-2017</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
